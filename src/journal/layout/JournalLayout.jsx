@@ -22,7 +22,9 @@ export const JournalLayout = ({ children }) => {
                 sx={{ flexGrow: 1, padding: 1 }}
             >
 
-                <Toolbar />
+                <Toolbar 
+                    
+                />
 
                 {children}
 

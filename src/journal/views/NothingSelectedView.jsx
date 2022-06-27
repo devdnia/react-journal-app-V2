@@ -10,15 +10,15 @@ export const NothingSelectedView = () => {
       direction="column"
       alignItems="center"
       justifyContent="center"
-      sx={{ minHeight: 'calc( 100vh - 110px)', backgroundColor: 'primary.main', borderRadius:3 }}
+      sx={{ minHeight: 'calc( 100vh - 110px)', backgroundColor: 'white', borderRadius:3 }}
     >
       <Grid item
       xs={12}>
-        <StarOutline sx={{ fontSize: 100, color: 'white'}}/>
+        <StarOutline sx={{ fontSize: 100, color: 'yellow', opacity: 0.4 }}/>
       </Grid>
       <Grid item
       xs={12}>
-        <Typography color="white" variant='h5'>Selecciona o crea una entrada</Typography>
+        <Typography color="secondary" variant='h5'>Selecciona o crea una entrada</Typography>
       </Grid>
     </Grid>
   )

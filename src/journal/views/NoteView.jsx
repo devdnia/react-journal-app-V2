@@ -26,7 +26,7 @@ export const NoteView = () => {
 
 
     useEffect(() => {
-        distpatch(setActiveNote( formState ));
+        distpatch(setActiveNote(formState));
     }, [formState]);
 
     const onSaveNote = () => {
@@ -34,34 +34,34 @@ export const NoteView = () => {
     };
 
     useEffect(() => {
-        if( messageSaved.length >0 ){
+        if (messageSaved.length > 0) {
             Swal.fire('Nota actualizada', messageSaved, 'success');
         }
-    },[messageSaved]);
+    }, [messageSaved]);
 
     const onFileInputChange = ({ target }) => {
 
-        if(target.files === 0) return;
-        
-        distpatch( startUploadingFiles(target.files) );
+        if (target.files === 0) return;
+
+        distpatch(startUploadingFiles(target.files));
     }
 
-    const onDelete= () => {
+    const onDelete = () => {
 
         Swal.fire({
             title: '¿Esta seguro de eliminar la nota?',
             showDenyButton: true,
             confirmButtonText: 'Eliminar',
             denyButtonText: `Salir`,
-          }).then((result) => {
+        }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-              Swal.fire('Eliminada', '', 'success')
-              distpatch( startDelitingNote());
+                Swal.fire('Eliminada', '', 'success')
+                distpatch(startDelitingNote());
             } else if (result.isDenied) {
-              Swal.fire('No se ha eliminado', '', 'info')
+                Swal.fire('No se ha eliminado', '', 'info')
             }
-          })
+        })
     }
 
 
@@ -89,7 +89,7 @@ export const NoteView = () => {
 
             <Grid item>
 
-                <input 
+                <input
                     type="file"
                     multiple
                     ref={fileInputRef}
@@ -97,23 +97,34 @@ export const NoteView = () => {
                     style={{ display: 'none' }}
                 />
 
-                <IconButton 
+                <IconButton
                     color="primary"
                     disabled={isSaving}
-                    onClick={() => fileInputRef.current.click() } 
+                    onClick={() => fileInputRef.current.click()}
                 >
                     <UploadOutlined />
                 </IconButton>
 
-                <Button 
+                <Button
                     disabled={isSaving}
-                    onClick={ onSaveNote}
-                    color="primary" 
+                    onClick={onSaveNote}
+                    color="primary"
                     sx={{ padding: 2 }}
-                    >
+                >
                     <SaveOutlined sx={{ fontSize: 30, mr: 1 }} />
                     Guardar
                 </Button>
+
+                <Button
+                    onClick={onDelete}
+                    sx={{ padding: 2}}
+                    color="error"
+
+                >
+                    <DeleteOutlined />
+                    Borrar
+                </Button>
+
             </Grid>
 
             <Grid container>
@@ -150,22 +161,10 @@ export const NoteView = () => {
                 />
             </Grid>
 
-            <Grid container justifyContent='end'>
-                    <Button
-                        onClick={ onDelete }
-                        sx={{ mt: 2}}
-                        color="error"
-
-                    >
-                        <DeleteOutlined />
-                        Borrar
-                    </Button>
-            </Grid>
-
             {
-                ( !note.imageUrls )
-                ? null
-                : <ImageGallery images={note.imageUrls} />
+                (!note.imageUrls)
+                    ? null
+                    : <ImageGallery images={note.imageUrls} />
             }
 
         </Grid>
