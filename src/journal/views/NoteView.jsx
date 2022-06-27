@@ -41,13 +41,27 @@ export const NoteView = () => {
 
     const onFileInputChange = ({ target }) => {
 
-        // if(target.files === 0) return;
+        if(target.files === 0) return;
         
         distpatch( startUploadingFiles(target.files) );
     }
 
     const onDelete= () => {
-        distpatch( startDelitingNote());
+
+        Swal.fire({
+            title: '¿Esta seguro de eliminar la nota?',
+            showDenyButton: true,
+            confirmButtonText: 'Eliminar',
+            denyButtonText: `Salir`,
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              Swal.fire('Eliminada', '', 'success')
+              distpatch( startDelitingNote());
+            } else if (result.isDenied) {
+              Swal.fire('No se ha eliminado', '', 'info')
+            }
+          })
     }
 
 
