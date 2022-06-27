@@ -40,7 +40,8 @@ export const NoteView = () => {
     },[messageSaved]);
 
     const onFileInputChange = ({ target }) => {
-        if(target.files === 0) return;
+
+        // if(target.files === 0) return;
         
         distpatch( startUploadingFiles(target.files) );
     }
