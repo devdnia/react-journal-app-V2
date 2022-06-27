@@ -35,7 +35,7 @@ Cloudinary
 [sweetalert2](https://cloudinary.com/)
 
 ### Gestión de estados
-La gestión de los estados es mediante Redux con redujsToolkit.
+La gestión de los estados es mediante Redux con redujs-Toolkit.
 
 ### Navegación
 React router dom versión 6
