@@ -38,7 +38,6 @@ export const journalSlice = createSlice({
         setSaving: (state) => {
             state.isSaving = true;
             state.messageSaved = '';
-            // TODO: mensaje de error...
         },
         updateNote: (state, action) => { // payload: note
             state.isSaving = false;
